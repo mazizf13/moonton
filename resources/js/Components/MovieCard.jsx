@@ -1,14 +1,21 @@
-import PropType from "prop-types";
+import { Link } from "@inertiajs/react";
+import PropTypes from "prop-types";
 
 MovieCard.propTypes = {
-    slug: PropType.string.isRequired,
-    name: PropType.string.isRequired,
-    category: PropType.string.isRequired,
-    thumbnail: PropType.string.isRequired,
-    rating: PropType.number,
+    slug: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string.isRequired,
+    rating: PropTypes.number,
 };
 
-export default function MovieCard({ slug, name, category, thumbnail }) {
+export default function MovieCard({
+    slug,
+    name,
+    category,
+    thumbnail,
+    rating = 0,
+}) {
     return (
         <div className="absolute group overflow-hidden mr-[30px]">
             <img
@@ -27,7 +34,10 @@ export default function MovieCard({ slug, name, category, thumbnail }) {
             <div className="absolute top-1/2 left-1/2 -translate-y-[500px] group-hover:-translate-y-1/2 -translate-x-1/2 z-20 transition ease-in-out duration-500">
                 <img src="/icons/ic_play.svg" className="" width="50" alt="" />
             </div>
-            <a href={slug} className="inset-0 absolute z-50"></a>
+            <Link
+                href={route("prototype.movie.show", slug)}
+                className="inset-0 absolute z-50"
+            ></Link>
         </div>
     );
 }
