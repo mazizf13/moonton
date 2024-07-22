@@ -1,5 +1,5 @@
+import Button from "@/Components/Button";
 import { Head } from "@inertiajs/react";
-import Button from "./Button";
 
 export default function SubscriptionCard({
     id,
@@ -12,7 +12,7 @@ export default function SubscriptionCard({
 }) {
     return (
         <>
-            <Head title="Subscription" />
+             <Head title="Subscription" />
             {/* Basic */}
             {!isPremium && (
                 <div className="flex flex-col gap-[30px] py-[30px] px-7 outline outline-1 outline-[#F1F1F1] rounded-[26px] text-black w-[300px] h-[max-content]">
@@ -26,31 +26,28 @@ export default function SubscriptionCard({
                             /{durationInMonth} months
                         </p>
                     </div>
+
                     {/* Mid Content: Benefits */}
                     <div className="flex flex-col gap-4">
                         {features.map((feature, index) => (
                             <div
                                 className="flex items-center gap-2"
-                                key={`${index}-${id}-${feature}`}
+                                key={`${index}-${id}-${features}`}
                             >
                                 <img src="/icons/ic_tick.svg" alt="" />
                                 <span className="text-sm">{feature}</span>
                             </div>
                         ))}
                     </div>
+
                     {/* Bottom: CTA Button */}
-                    <div>
-                        <Button
-                            type="button"
-                            variant="white-outline"
-                            onClick={onSelectSubscription}
-                        >
+                    <div onClick={onSelectSubscription}>
+                        <Button type="button" variant="white-outline">
                             <span className="text-base">Start {name}</span>
                         </Button>
                     </div>
                 </div>
             )}
-
             {/* For Greatest */}
             {isPremium && (
                 <div className="flex flex-col gap-[30px] py-[30px] px-7 outline outline-1 outline-[#F1F1F1] rounded-[26px] text-white w-[300px] bg-black">
@@ -60,7 +57,7 @@ export default function SubscriptionCard({
                     </div>
                     {/* Top Content: Name-Price */}
                     <div>
-                        <div className="text-sm mb-2">For Greatest</div>
+                        <div className="text-sm mb-2">{name}</div>
                         <div className="text-[28px] font-bold">
                             IDR {price.toLocaleString()}
                         </div>
