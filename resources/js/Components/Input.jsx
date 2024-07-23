@@ -53,6 +53,9 @@ export default function Input({
                 required={required}
                 onChange={(e) => handleChange(e)}
                 placeholder={placeholder}
+                step="0.1"
+                min="0"
+                max="10"
             />
         </div>
     );
