@@ -18,16 +18,28 @@ class SubscriptionPlanTableSeeder extends Seeder
                 'name' => 'Basic',
                 'price' => 200000,
                 'active_period_in_months' => 3,
-                'features' => json_encode(['feature1', 'feature2']),
+                'features' => json_encode([
+                    'Watch on 1 screen',
+                    'SD quality',
+                    'Download on 1 device',
+                    'Limited to 1 profile',
+                    'Access to all content',
+                ]),
             ],
             [
                 'name' => 'Premium',
                 'price' => 800000,
                 'active_period_in_months' => 6,
-                'features' => json_encode(['feature1', 'feature2', 'feature3', 'feature4', 'feature5']),
+                'features' => json_encode([
+                    'Watch on 4 screens',
+                    'HD & UHD quality',
+                    'Download on 4 devices',
+                    'Up to 5 profiles',
+                    'Access to all content',
+                    'Priority support',
+                ]),
             ],
         ];
-
         SubscriptionPlan::insert($subscriptionPlans);
     }
 }
