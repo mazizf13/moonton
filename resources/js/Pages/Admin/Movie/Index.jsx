@@ -1,13 +1,15 @@
 import Authenticated from "@/Layouts/Authenticated/Index";
 import Button from "@/Components/Button";
 import FlashMessage from "@/Components/FlashMessage";
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, useForm } from "@inertiajs/react";
 
 export default function Index({ auth, flashMessage, movies }) {
+    const {delete: destroy, put} = useForm();
+
     return (
         <Authenticated user={auth.user}>
             <div className="p-6">
-                <Head title="List of Movie" />
+                <Head title="List of Movies" />
                 <Link href={route('admin.dashboard.movie.create')}>
                     <Button type="button" className="mb-4 py-2 px-4 text-base">Insert New Movie</Button>
                 </Link>
@@ -40,18 +42,38 @@ export default function Index({ auth, flashMessage, movies }) {
                                 <td className="py-4 px-4 text-left">
                                     <div className="whitespace-normal break-words">{movie.category}</div>
                                 </td>
-                                <td className="py-4 px-4 text-left">{movie.rating.toFixed(1)}</td>
-                                <td className="py-4 px-4 text-center">
+                                <td className="py-5 px-8 text-left">{movie.rating.toFixed(1)}</td>
+                                <td className="py-2 px-2 text-center">
                                     <Link href={route("admin.dashboard.movie.edit", movie.id)}>
-                                        <Button type="button" variant="warning" className="py-1 px-2 text-sm">
+                                        <Button type="button" variant="warning" className="text-sm">
                                             Edit
                                         </Button>
                                     </Link>
                                 </td>
-                                <td className="py-4 px-4 text-center">
-                                    <Button type="button" variant="danger" className="py-1 px-2 text-sm">
-                                        Delete
-                                    </Button>
+                                <td className="py-2 px-2 text-center">
+                                    <div
+                                        onClick={() => {
+                                            movie.deleted_at
+                                                ? put(
+                                                    route(
+                                                        "admin.dashboard.movie.restore",
+                                                        movie.id
+                                                    )
+                                                )
+                                                : destroy(
+                                                    route(
+                                                        "admin.dashboard.movie.destroy",
+                                                        movie.id
+                                                    )
+                                                );
+                                        }}
+                                    >
+                                        <Button type="button" variant="danger" className="text-sm">
+                                            {movie.deleted_at
+                                                ? "Restore"
+                                                : "Delete"}
+                                        </Button>
+                                    </div>
                                 </td>
                             </tr>
                         ))}
