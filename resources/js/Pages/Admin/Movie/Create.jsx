@@ -47,6 +47,7 @@
                         placeholder="Enter the name of the movie"
                     />
                     <InputError message={errors.name} className="mt-2" />
+
                     <Label forInput="category" value="Category" className="mt-4" />
                     <Input
                         type="text"
@@ -56,6 +57,7 @@
                         placeholder="Enter the category of the movie"
                     />
                     <InputError message={errors.category} className="mt-2" />
+
                     <Label
                         forInput="video_url"
                         value="Video URL"
@@ -81,7 +83,6 @@
                         variant="primary-outline"
                         handleChange={onHandleChange}
                         placeholder="Insert thumbnail of the movie"
-                        isError={errors.thumbnail}
                     />
                     <InputError message={errors.thumbnail} className="mt-2" />
 
@@ -92,7 +93,9 @@
                         variant="primary-outline"
                         handleChange={onHandleChange}
                         placeholder="Enter the rating of the movie"
-                        isError={errors.rating}
+                        step="0.1"
+                        min="0"
+                        max="10"
                     />
                     <InputError message={errors.rating} className="mt-2" />
 
