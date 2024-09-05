@@ -56,7 +56,7 @@ class User extends Authenticatable
         return $dateNow->lessThanOrEqualTo($dateExpired);
     }
 
-    public function LastActiveUserSubscription(): HasOne {
+    public function LastActiveUserSubscription(): hasOne {
         return $this->hasOne(UserSubscription::class)->wherePaymentStatus('paid')->latest();
     }
 }

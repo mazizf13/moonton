@@ -7,7 +7,7 @@ export default function Index({ auth, flashMessage, movies }) {
     const {delete: destroy, put} = useForm();
 
     return (
-        <Authenticated user={auth.user}>
+        <Authenticated auth={auth}>
             <div className="p-6">
                 <Head title="List of Movies" />
                 <Link href={route('admin.dashboard.movie.create')}>

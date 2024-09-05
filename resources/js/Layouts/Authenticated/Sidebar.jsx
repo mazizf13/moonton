@@ -2,7 +2,7 @@ import SubscriptionDetail from "./SubscriptionDetail";
 import MenuItem from "./MenuItem";
 import { UserMenu, UserOthers } from "./MenuList";
 
-export default function Sidebar({ user }) {
+export default function Sidebar({ auth }) {
     return (
         <aside className="fixed z-50 w-[300px] h-full">
             <div className="flex flex-col p-[30px] pr-0 border-r border-gray-[#F1F1F1] overflow-y-auto h-full">
@@ -40,14 +40,14 @@ export default function Sidebar({ user }) {
                         ))}
                     </div>
 
-                    {user.activePlan && (
+                    {auth.activePlan && (
                         <SubscriptionDetail
-                            name={user.activePlan.name}
-                            isPremium={user.activePlan.name === "Premium"}
+                            name={auth.activePlan.name}
+                            isPremium={auth.activePlan.name === "Premium"}
                             remainingActiveDays={
-                                user.activePlan.remainingActiveDays
+                                auth.activePlan.remainingActiveDays
                             }
-                            activeDays={user.activePlan.activeDays}
+                            activeDays={auth.activePlan.activeDays}
                         />
                     )}
                 </div>

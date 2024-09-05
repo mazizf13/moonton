@@ -33,8 +33,8 @@ export default function SubscriptionPlan({ auth, subscriptionPlans, env }) {
     };
 
     return (
-        <Authenticated user={auth.user}>
-            <Head>
+        <Authenticated auth={auth}>
+            <Head title="Subscription Plan">
                 <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key={env.MIDTRANS_CLIENTKEY}></script>
             </Head>
             <div className="py-20 flex flex-col items-center">
@@ -55,7 +55,7 @@ export default function SubscriptionPlan({ auth, subscriptionPlans, env }) {
                                 price={subscriptionPlan.price}
                                 durationInMonth={subscriptionPlan.active_period_in_months}
                                 features={JSON.parse(subscriptionPlan.features)}
-                                isPremium={subscriptionPlan.name === 'Premium'}
+                                isPremium={subscriptionPlan.name === "Premium"}
                                 onSelectSubscription={() => selectSubscription(subscriptionPlan.id)}
                             />
                         ))}

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Midtrans\Config;
 use Midtrans\Snap;
+use Midtrans\Notification;
 
 class SubscriptionPlanController extends Controller
 {
@@ -66,7 +67,7 @@ class SubscriptionPlanController extends Controller
 
     public function midtransCallback(Request $request)
     {
-        $notif = new Midtrans\Notification();
+        $notif = new \Midtrans\Notification();
 
         $transaction_status = $notif->transaction_status;
         $fraud = $notif->fraud_status;

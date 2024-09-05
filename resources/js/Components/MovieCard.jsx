@@ -14,7 +14,6 @@ export default function MovieCard({
     name,
     category,
     thumbnail,
-    rating = 0,
 }) {
     return (
         <div className="absolute group overflow-hidden mr-[30px]">

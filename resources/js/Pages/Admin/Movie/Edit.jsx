@@ -44,7 +44,7 @@ export default function Create({ auth, movie }) {
     };
 
     return (
-        <Authenticated user={auth.user}>
+        <Authenticated auth={auth}>
             <Head title="Admin - Update Movie" />
             <h1 className="text-xl">Update Movie: {movie.name}</h1>
             <hr className="mb-4" />
